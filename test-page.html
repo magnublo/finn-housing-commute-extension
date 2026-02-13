@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Page - FINN Housing Commute Extension</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    .test-info {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+    
+    .test-article {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .test-article h2 {
+      margin-top: 0;
+      color: #0084ff;
+    }
+    
+    .test-article .address {
+      color: #666;
+      margin: 10px 0;
+    }
+    
+    .test-article .price {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+    
+    .test-article a {
+      color: #0084ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test Page for FINN Housing Commute Extension</h1>
+  
+  <div class="test-info">
+    <strong>Note:</strong> This is a test page that simulates FINN.no listing structure. 
+    The extension should inject commute information into each article below.
+    <br><br>
+    <strong>To test:</strong>
+    <ol>
+      <li>Make sure the extension is configured with a Google Maps API key and destination</li>
+      <li>Reload this page</li>
+      <li>Check if commute times appear in each listing</li>
+    </ol>
+  </div>
+  
+  <main>
+    <!-- Test listings with real Oslo addresses -->
+    
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=1">Fin leilighet i Grünerløkka</a></h2>
+      <div class="address">Thorvald Meyers gate 30, 0555 Oslo</div>
+      <div class="price">4 500 000 kr</div>
+      <p>Flott 3-roms leilighet i populært område med kort vei til alt.</p>
+    </article>
+    
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=2">Moderne leilighet i Majorstuen</a></h2>
+      <div class="address">Bogstadveien 50, 0366 Oslo</div>
+      <div class="price">6 200 000 kr</div>
+      <p>Nyoppusset 2-roms med balkong og flott utsikt.</p>
+    </article>
+    
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=3">Hyggelig rekkehus i Holmlia</a></h2>
+      <div class="address">Holmlia Senter 1, 1255 Oslo</div>
+      <div class="price">3 800 000 kr</div>
+      <p>Romslig familiebolig med stor hage og gode solforhold.</p>
+    </article>
+    
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=4">Leilighet ved Aker Brygge</a></h2>
+      <div class="address">Stranden 3, 0250 Oslo</div>
+      <div class="price">8 900 000 kr</div>
+      <p>Eksklusiv 4-roms med fantastisk havneutsikt.</p>
+    </article>
+    
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=5">Koselig leilighet i Gamle Oslo</a></h2>
+      <div class="address">Etterstadgata 20, 0659 Oslo</div>
+      <div class="price">3 200 000 kr</div>
+      <p>2-roms med sjarm og god beliggenhet nær kollektivknutepunkt.</p>
+    </article>
+    
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=6">Leilighet med terrasse i Frogner</a></h2>
+      <div class="address">Bygdøy allé 15, 0262 Oslo</div>
+      <div class="price">7 500 000 kr</div>
+      <p>Flott 3-roms med stor terrasse i rolig strøk.</p>
+    </article>
+    
+    <!-- Test with an invalid address -->
+    <article class="ads__unit test-article">
+      <h2><a href="/realestate/homes/ad.html?finnkode=7">Test: Ugyldig addresse</a></h2>
+      <div class="address">Ikke en ekte adresse 999</div>
+      <div class="price">1 000 000 kr</div>
+      <p>This listing has an invalid address to test error handling.</p>
+    </article>
+  </main>
+  
+  <script>
+    console.log('Test page loaded');
+    console.log('Articles found:', document.querySelectorAll('article.ads__unit').length);
+    
+    // Simulate dynamic content loading after 3 seconds
+    setTimeout(() => {
+      console.log('Simulating dynamic content load...');
+      const newArticle = document.createElement('article');
+      newArticle.className = 'ads__unit test-article';
+      newArticle.innerHTML = `
+        <h2><a href="/realestate/homes/ad.html?finnkode=8">Dynamisk lastet leilighet</a></h2>
+        <div class="address">Storgata 10, 0155 Oslo</div>
+        <div class="price">4 000 000 kr</div>
+        <p>This listing was dynamically added to test MutationObserver.</p>
+      `;
+      document.querySelector('main').appendChild(newArticle);
+      console.log('Dynamic article added');
+    }, 3000);
+  </script>
+</body>
+</html>

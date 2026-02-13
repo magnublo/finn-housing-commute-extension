@@ -16,7 +16,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.finn.no/realestate/homes/search.html*"],
+      "matches": [
+        "https://www.finn.no/realestate/homes/search.html*",
+        "file://*/test-page.html"
+      ],
       "js": ["content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"

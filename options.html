@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FINN Commute Extension - Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚇 FINN Commute Extension Settings</h1>
+      <p class="subtitle">Configure your commute preferences for FINN housing search results</p>
+    </header>
+
+    <main>
+      <section class="settings-section">
+        <h2>Google Maps API Configuration</h2>
+        <div class="form-group">
+          <label for="apiKey">
+            Google Maps API Key *
+            <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" class="help-link">Get API Key</a>
+          </label>
+          <input type="text" id="apiKey" placeholder="Enter your Google Maps API key">
+          <small class="help-text">Required for calculating commute times. Make sure to enable the Directions API.</small>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>Commute Settings</h2>
+        
+        <div class="form-group">
+          <label for="destination">Destination Address *</label>
+          <input type="text" id="destination" placeholder="e.g., Karl Johans gate 22, Oslo">
+          <small class="help-text">Your work or desired destination address</small>
+        </div>
+
+        <div class="form-group">
+          <label for="arrivalTime">Desired Arrival Time</label>
+          <input type="time" id="arrivalTime" value="08:30">
+          <small class="help-text">Target arrival time for commute calculation (24-hour format)</small>
+        </div>
+
+        <div class="form-group">
+          <label for="maxCommuteMinutes">Maximum Commute Time (minutes)</label>
+          <input type="number" id="maxCommuteMinutes" min="1" max="300" value="60">
+          <small class="help-text">Listings with longer commutes will be highlighted</small>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="hideAboveMax">
+            Hide listings above maximum commute time
+          </label>
+          <small class="help-text">Automatically hide listings that exceed your maximum commute time</small>
+        </div>
+      </section>
+
+      <section class="settings-section info-section">
+        <h3>ℹ️ How it works</h3>
+        <ul>
+          <li>The extension calculates public transport commute times from each listing to your destination</li>
+          <li>Commute times are cached for 24 hours to reduce API usage</li>
+          <li>Green indicators show commutes within your maximum time</li>
+          <li>Yellow indicators show commutes exceeding your maximum time</li>
+          <li>Only visible listings are processed to optimize performance</li>
+        </ul>
+      </section>
+
+      <div class="actions">
+        <button id="saveBtn" class="btn btn-primary">Save Settings</button>
+        <button id="clearCacheBtn" class="btn btn-secondary">Clear Cache</button>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+    </main>
+
+    <footer>
+      <p>FINN Housing Commute Extension v1.0.0</p>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

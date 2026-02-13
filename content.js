@@ -213,12 +213,12 @@ function injectCommuteInfo(card, info) {
   } else {
     const icon = info.duration <= config.maxCommuteMinutes ? '🚇' : '⏱️';
     const statusClass = info.duration <= config.maxCommuteMinutes ? 'good' : 'warning';
-    const cacheIndicator = info.fromCache ? ' (cached)' : '';
+    const cacheIcon = info.fromCache ? ' 💾' : '';
     
     commuteElement.innerHTML = `
       <div class="finn-commute-success ${statusClass}">
         <span class="finn-commute-icon">${icon}</span>
-        <span class="finn-commute-text">PT commute: ${info.duration} min${cacheIndicator}</span>
+        <span class="finn-commute-text">PT commute: ${info.duration} min${cacheIcon}</span>
       </div>
     `;
     commuteElement.classList.remove('error');

@@ -71,11 +71,14 @@ function clearCache() {
       return;
     }
     
+    // Count actual cache entries (each entry has a data key and timestamp key)
+    const entryCount = Math.floor(keysToRemove.length / 2);
+    
     chrome.storage.local.remove(keysToRemove, () => {
       if (chrome.runtime.lastError) {
         showStatus('Error clearing cache: ' + chrome.runtime.lastError.message, 'error');
       } else {
-        showStatus(`Cache cleared! Removed ${keysToRemove.length / 2} cached entries.`, 'success');
+        showStatus(`Cache cleared! Removed ${entryCount} cached entries.`, 'success');
       }
     });
   });
